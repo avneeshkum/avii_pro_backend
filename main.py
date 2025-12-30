@@ -34,9 +34,7 @@ db_mod.Base.metadata.create_all(bind=db_mod.engine)
 
 # CORS Setup (Production mein '*' ki jagah frontend URL daalna safe rehta hai)
 origins = [
-    "http://localhost:5173",          # Local React
-    "https://avii-pro.vercel.app",    # Example: Tera Future Frontend URL
-    "*"                               # Abhi ke liye sab allow hai
+    "https://avii-pro.netlify.app"
 ]
 
 app.add_middleware(
@@ -330,4 +328,5 @@ def get_user_chat_history(
 if __name__ == "__main__":
     import uvicorn
     # Host '0.0.0.0' allows external access (required for Render/Railway)
+
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
