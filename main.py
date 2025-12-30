@@ -90,7 +90,7 @@ async def google_login(google_data: GoogleToken, db: Session = Depends(db_mod.ge
         # Note: Production mein CLIENT_ID verify karna better hota hai
         id_info = id_token.verify_oauth2_token(
             google_data.token, 
-            google_requests.Request()
+            google_requests.Request(),
             os.getenv("GOOGLE_CLIENT_ID")
         )
         email = id_info['email']
@@ -331,4 +331,5 @@ if __name__ == "__main__":
     # Host '0.0.0.0' allows external access (required for Render/Railway)
 
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
 
