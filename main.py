@@ -34,7 +34,8 @@ db_mod.Base.metadata.create_all(bind=db_mod.engine)
 
 # CORS Setup (Production mein '*' ki jagah frontend URL daalna safe rehta hai)
 origins = [
-    "https://avii-pro.netlify.app"
+    "https://avii-pro.netlify.app",
+    "http://localhost:5173"
 ]
 
 app.add_middleware(
@@ -331,5 +332,6 @@ if __name__ == "__main__":
     # Host '0.0.0.0' allows external access (required for Render/Railway)
 
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
 
 
